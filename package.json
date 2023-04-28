@@ -1,0 +1,23 @@
+{
+  "name": "term-project-teamp",
+  "version": "1.0.0",
+  "description": "term-project-teamp created by GitHub Classroom Trello: https://trello.com/b/wiXj0IKg/csc667-867-uno",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csc-667-spring-2023-roberts/term-project-teamp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csc-667-spring-2023-roberts/term-project-teamp/issues"
+  },
+  "homepage": "https://github.com/csc-667-spring-2023-roberts/term-project-teamp#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
