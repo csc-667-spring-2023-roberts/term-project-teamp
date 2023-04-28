@@ -6,6 +6,8 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+app.set("views", path.join(".", "backend", "views"));
+app.set("view engine", "pug");
 app.use(express.static(path.join(".", "backend", "static")));
 
 const rootRoutes = require("../backend/routes/root.js");

@@ -2,7 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.send("Hello World from within a route");
+  const name = "Name";
+  res.render("home", {
+    title: "Hello world",
+    message: `First template ${name}`,
+  });
 });
 
 module.exports = router;
