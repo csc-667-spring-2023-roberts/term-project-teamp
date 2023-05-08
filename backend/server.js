@@ -4,6 +4,11 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 
+const gameRoutes = require("./routes/static/game.js");
+const homeRoutes = require("./routes/static/home.js");
+const lobbyRoutes = require("./routes/static/lobby.js");
+const signUpRoutes = require("./routes/static/sign-up.js");
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -34,7 +39,10 @@ const rootRoutes = require("../backend/routes/root.js");
 const requestTime = require("../backend/middleware/request-time.js");
 
 app.use(requestTime);
-app.use("/", rootRoutes);
+app.use("/", homeRoutes);
+app.use("/games", gameRoutes);
+app.use("/lobby", lobbyRoutes);
+app.use("/sign-up", signUpRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

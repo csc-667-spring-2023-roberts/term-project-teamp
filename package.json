@@ -4,7 +4,6 @@
   "description": "term-project-teamp created by GitHub Classroom Trello: https://trello.com/b/wiXj0IKg/csc667-867-uno",
   "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
     "start:dev": "concurrently \"npm:server:dev\" \"npm:build:dev\"",
     "server:dev": "NODE_ENV=development nodemon -e js,pug --watch backend ./server.js",
