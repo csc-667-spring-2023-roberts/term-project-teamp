@@ -3,6 +3,7 @@ const createError = require("http-errors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const express = require("express");
+require("dotenv").config;
 
 const gameRoutes = require("./routes/static/game.js");
 const homeRoutes = require("./routes/static/home.js");
