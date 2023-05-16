@@ -3,12 +3,13 @@ const createError = require("http-errors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const express = require("express");
+require("dotenv").config;
 
 const gameRoutes = require("./routes/static/game.js");
 const homeRoutes = require("./routes/static/home.js");
 const lobbyRoutes = require("./routes/static/lobby.js");
 const signUpRoutes = require("./routes/static/sign-up.js");
-
+const testRoute = require("./routes/testing/index.js");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -40,6 +41,7 @@ const requestTime = require("../backend/middleware/request-time.js");
 
 app.use(requestTime);
 app.use("/", homeRoutes);
+app.use("/testing", testRoute);
 app.use("/games", gameRoutes);
 app.use("/lobby", lobbyRoutes);
 app.use("/sign-up", signUpRoutes);
