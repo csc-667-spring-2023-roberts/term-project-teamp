@@ -1,4 +1,6 @@
 const path = require("path");
+const http = require("http");
+const { Server } = require("socket.io");
 const createError = require("http-errors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
@@ -46,7 +48,16 @@ app.use("/games", gameRoutes);
 app.use("/lobby", lobbyRoutes);
 app.use("/sign-up", signUpRoutes);
 
-app.listen(PORT, () => {
+const server = http.createServer(app);
+const io = new Server(server);
+
+//io.engine.use(Session information will go in here)
+
+io.on("connection", (socket) => {
+  console.log("Connection");
+});
+
+server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
