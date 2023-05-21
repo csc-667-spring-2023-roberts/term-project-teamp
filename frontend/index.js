@@ -22,7 +22,6 @@ document
   .addEventListener("keydown", (event) => {
     if (event.keyCode === 13) {
       const message = event.target.value;
-      console.log(message);
       event.target.value = "";
 
       fetch("/chat/0", {
