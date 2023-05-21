@@ -1965,8 +1965,7 @@
       .addEventListener("keydown", (t) => {
         if (13 === t.keyCode) {
           const e = t.target.value;
-          console.log(e),
-            (t.target.value = ""),
+          (t.target.value = ""),
             fetch("/chat/0", {
               method: "post",
               body: JSON.stringify({ message: e }),
