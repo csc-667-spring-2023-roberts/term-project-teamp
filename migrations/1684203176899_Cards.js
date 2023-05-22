@@ -4,18 +4,25 @@
 
 exports.up = (pgm) => {
   pgm.createTable("Cards", {
-    card_id: "id",
+    card_id: {
+      type: "id",
+      notNull: true,
+      autoIncrement: true,
+    },
     cardColor: {
       type: "VARCHAR(255)",
       notNull: true,
     },
     cardNumber: {
       type: "INTEGER",
-      notNull: true,
     },
     cardSpecial: {
       type: "INTEGER",
       notNull: true,
+    },
+    cardName: {
+      type: "VARCHAR(255)",
+      notNull: false,
     },
   });
 };

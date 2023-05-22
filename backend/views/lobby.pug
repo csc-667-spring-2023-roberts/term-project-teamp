@@ -1,10 +1,20 @@
 extends layout
 block content 
-    h1= title 
-    p= message
-
-    ul
-        li: a(href="/") Home Page
-        li: a(href="/lobby") lobby 
-        li: a(href="/games/10") Game Demo 
-        li: a(href="/sign-up") Sign up to play   
+    html(lang="en")
+        head
+            meta(charset="UTF-8")
+            meta(http-equiv="X-UA-Compatible", content="IE=edge")
+            meta(name="viewport", content="width=device-width, initial-scale=1.0")
+            title Document
+        body 
+            h1= title 
+            p= message
+            ul
+                li: a(href="/") Home Page
+                li: a(href="/lobby") lobby 
+                li: a(href="/games/10") Game Demo 
+                li: a(href="/sign-up") Sign up to play   
+            div#chat-container 
+            div#message 
+                label(for="chat-message")
+                input(type="text", id="chatMessage", name = "message", placeholder = "Chat")

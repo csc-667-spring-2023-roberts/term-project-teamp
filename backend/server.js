@@ -1,18 +1,30 @@
+const express = require("express");
+const app = express();
+const http = require("http");
+const { Server } = require("socket.io");
+const server = http.createServer(app);
+const io = new Server(server);
 const path = require("path");
 const createError = require("http-errors");
+
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-const express = require("express");
 require("dotenv").config;
 
+//io.engine.use(sessionInfo) to integrate session
+io.on("connection", (socket) => {
+  console.log("Connection established");
+});
+
+app.set("io", io);
+
+const chatRoutes = require("./routes/static/chat.js");
 const gameRoutes = require("./routes/static/game.js");
 const homeRoutes = require("./routes/static/home.js");
 const lobbyRoutes = require("./routes/static/lobby.js");
 const signUpRoutes = require("./routes/static/sign-up.js");
 const testRoute = require("./routes/testing/index.js");
 const PORT = process.env.PORT || 3000;
-
-const app = express();
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -45,8 +57,9 @@ app.use("/testing", testRoute);
 app.use("/games", gameRoutes);
 app.use("/lobby", lobbyRoutes);
 app.use("/sign-up", signUpRoutes);
+app.use("/chat", chatRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
