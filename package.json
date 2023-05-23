@@ -27,7 +27,7 @@
     "db:create": "node-pg-migrate create -- ",
     "db:migrate": "node-pg-migrate up --no-check-order",
     "db:rollback": "node-pg-migrate down --no-check-order",
-    "postinstall": "npm run db:migrate"
+    "postinstall": "npm run db:rollback"
   },
   "devDependencies": {
     "babel-loader": "^9.1.2",
