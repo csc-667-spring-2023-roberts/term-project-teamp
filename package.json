@@ -44,5 +44,8 @@
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
     "frontend/**/*.js": "webpack"
+  },
+  "engines": {
+    "node": ">=16 <17"
   }
 }
