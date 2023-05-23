@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('common/head') %>
+  </head>
+
+  <body>
+    <div class="container">
+      <%- include('common/navbar') %> <% if (user) { %> <% } else { %>
+      <ul>
+        <li><a href="/login">login</a></li>
+        <li><a href="/signup">signup</a></li>
+      </ul>
+      <% } %>
+      <main class="main">
+        <div style="height: 120px; float: right;">
+          <p>Add new game</p>
+          <input
+            type="submit"
+            value="Create"
+            onClick="window.location.href = '/createGame'"
+          />
+        </div>
+
+        <div style="width: 70%; ">
+          
+          <p>Current games:</p>
+            <% openrooms.forEach(function(room) { %>
+            <div class="game-card" style="display: flex; border: 1px SOLID aliceblue;">
+              <div style="width:40%; ">
+              <img src="https://assetsio.reedpopcdn.com/uno-online.jpg" width="100px" height="100px" style="border-radius: 20px;"></img>
+              <h3><%= room.name %></h3>
+            </div>
+              <div style="width:60%; ">
+                <h3>Total Players : <%= room.players.length %> players</h3>
+                <button class="submit-btn"><a href="/joingame?room=<%= room.name %>">Join Game</a></button>
+              </div>
+              
+            </div><br>
+            <% }); %>
+        </div>
+      </main>
+      <aside class="sidebar"></aside>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts/game.js"></script>
+  </body>
+</html>

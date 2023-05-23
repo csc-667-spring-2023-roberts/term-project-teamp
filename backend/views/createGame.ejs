@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"> 
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <script>
+    function startNewGame(e) {
+      console.log("startNewGame");
+      var room = document.getElementById("roomname");
+
+      let x = sessionStorage.getItem("login");
+      //console.log(x);
+
+      let user = JSON.parse(x);
+
+      const message = {
+        event: "joinroom",
+        user: user.username,
+        room: room.value,
+      };
+
+      //alert(e);
+      socket.emit("joinroom", JSON.stringify(message));
+      //e.preventDefault();
+    }
+  </script>  
+</head>
+
+<body class="signup-body">
+  <%- include('common/navbar') %> 
+  <div class="signUp-container">
+    <form id="create-game" style="background-color: white; color: black; border-radius: 20px;" action="newgame" method="post" class="signup-form" onsubmit="startNewGame(event)">
+      <a href="/" class=""> HOME</a>
+      <h1 style="color: black;">ADD NEW GAME</h1>
+      <label for="roomname"> 
+        <input class="input-field" required id="roomname" type="text" name="roomname" placeholder="Lobby name"/>
+      </label> 
+      <label for="password"> 
+        <input class="input-field" required pass="gamePass" type="password" placeholder="password" id="password" name="password" /> 
+      </label>         
+      <label> 
+        <input class="input-field" required players="number" min="1" placeholder="Total Players" type="number" name="players"/> 
+      </label> 
+      <input class="submit-btn" style="background-color: red; width: 100%;" type="submit" value="SUBMIT"/>
+    </form>
+  </div>
+</body>
+</html>

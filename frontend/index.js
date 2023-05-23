@@ -1,24 +1,26 @@
 import io from "socket.io-client";
-
-console.log("Hello from a bundle.");
 const socket = io();
 
-const messageContainer = document.querySelector("#chat-container");
+const messageContainer = document.querySelector("#messages");
+
 socket.on("chat-message", ({ message, sender }) => {
+  console.log({ message, sender });
+
   const display = document.createElement("div");
   const name = document.createElement("span");
   name.innerText = sender;
 
   const thing = document.createElement("div");
-  thing.innerText = message.message;
+  thing.innerText = message;
+
   display.appendChild(name);
   display.appendChild(thing);
 
-  messageContainer.appendChild(display);
+  messageContainer.append(display);
 });
 
 document
-  .querySelector("input[id=chatMessage]")
+  .querySelector("input#chatMessage")
   .addEventListener("keydown", (event) => {
     if (event.keyCode === 13) {
       const message = event.target.value;

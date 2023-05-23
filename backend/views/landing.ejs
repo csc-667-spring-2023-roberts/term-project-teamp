@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('common/head') %>
+  </head>
+
+  <body>
+    <div class="container_no_chat">
+      <main>
+        <div class="headers">
+        <img src="images/uno_logo.png" className="img" style="height: 60px; width:60px"/>
+        <h1 class="" style="margin-top: 10px;">UNO MASTER</h1>
+        <div style="flex:1;"></div>
+        <button class="submit-btn"><a href="/login"  style="text-decoration: none;">login</a></button>
+
+          </div>
+        <div class="content-wrapper">
+          <div class="current-games">
+            <h3>Live Games</h3>
+            <div>
+              <% openrooms.forEach(function(room) { %>
+              <div class="each-room">
+                <div style="width:40%; text-align: center;">
+                <img src="https://assetsio.reedpopcdn.com/uno-online.jpg" width="100px" height="100px" style="border-radius: 20px;"></img>
+                <br><%= room.name %> 
+              
+              </div>
+              <div style="width:60%; ">
+                <h3>Total Players : <%= room.players.length %> players</h3>
+                <div class="each-room-status"><%= room.status %></div>
+              </div>
+            </div> <br>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+    <script src="/scripts/game.js"></script>
+  </body>
+</html>

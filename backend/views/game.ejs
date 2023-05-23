@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include('common/head'); %>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/scripts/game.js"></script>
+  <script>
+    function onload(e) {
+      console.log("onload");
+      var room = document.getElementById("room");
+      let x = sessionStorage.getItem("login");
+      let user = JSON.parse(x);
+
+      const message = {
+        user: user.username,
+        room: room.value,
+      };
+
+      console.log(message);
+      socket.emit("joingameroom", JSON.stringify(message));
+    }
+  </script>
+</head>
+<style>
+  .game-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 200px;
+    gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+  }
+  
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  }
+</style>
+
+<body onload="onload()">
+  <div class="container">
+    <%- include('common/navbar'); %>
+
+      <main class="main">
+        <h1>Game Lobby </h1>
+        <div id="game-container">
+          <div style="display: grid; grid-template-columns: auto auto ;">
+            <div >
+              <div id="cardsleft"> <%= cardsleft %> cards left</div>
+              <img src="/images/card_back.png" width="98px" height="136px"/>
+            </div>
+            <div id="discardpile">
+              <span>Discard Pile</span><br/>
+              <img id="discardimg" src="<%= firstdiscard.src %>" width="98px" height="136px" cardid="0"/>
+            </div>
+          </div>
+          <br>
+          <% if(myturn === true){ %>
+            <button type="button" id="drawbutton" onClick="drawCard()" style="background-color: red; width: 20%;color:grey; padding:10px; cursor:pointer">Draw Card</button>
+          <% } else{ %>  
+            <button type="button" id="drawbutton" onClick="drawCard()" style="background-color: red; width: 20%;color:grey; padding:10px;" disabled>Draw Card</button>
+          <% } %>
+          <div id="cardarea">
+            <% me.hands.forEach((h) => { %>
+              <img src='<%= h.src %>' width="98px" height="136px" disabled="<%= !myturn %>" onClick="discardCard(this, this.src, <%= h.cardId %>)" cardid="<%= h.cardId %>"/>
+              <% }); 
+            %>
+          </div>
+        </div>
+       
+      </main>
+      <aside class="sidebar">
+        <h1>Lobby name: <%= roomname %> </h1>
+        <p>Host: <%= host %></p>
+        <table style="border:1px solid #fff; border-collapse: collapse;padding:20px">
+          <thead><tr><th style="border:1px solid #fff; border-collapse: collapse;padding:20px; color:black; background-color: orange;">Players</th></tr></thead>
+          <tbody id="players">
+        </tbody>
+      </table>
+        <h2>Chat </h2>
+        <form id="input-form" onsubmit="sendMessage(event);" style="padding: 20px">
+          <label for="message" style="color:black">CHAT:</label>
+          
+          <div id="chatbox">
+            <% chats.forEach(function(p) { %>
+              <div class="chattext"><span style="display:flex;"><img src="images/user.png" className="img" style="height: 20px; width:20px"></img><%= p.player %> : <%= p.message %></span>
+              </div>
+            <% }); 
+            %>
+          </div>
+          <textarea id="message" type="text" name="message"></textarea>
+          <input id="room" type="hidden" name="room" value="<%= roomname %>"/><br>
+          <input type="submit" value="SUBMIT" style="background-color: red; width: 100%;">
+        </form>
+      </aside>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('common/head') %>
+
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body class="signup-body">
+    <%- include('common/navbar') %> 
+    <div class="signUp-container">
+    
+
+      <form class="signup-form" method="post" action="/signup"  style="background-color: white; color: black; border-radius: 20px;">
+        <a href="/" class=""> HOME</a>
+        <h1 style="color: black;">REGISTER</h1>
+        <label>
+          <input class="input-field" required name="email" type="email"  placeholder="Email" />
+        </label>
+        <label>
+          <input class="input-field" required  type="text" name="username" placeholder="Username"/>
+        </label>
+        <label>
+          <input class="input-field" required  name="password"  type="password" placeholder="Password" />
+        </label>
+        <label>
+          <input class="input-field" required  name="confirm_password" type="password" placeholder="Confirm Password"
+          />
+        </label>
+       
+        <input class="submit-btn" style="background-color: red; width: 100%;" type="submit" value="SIGN UP" />
+        <p class="signup-text">
+          Already had an account? <a href="/login" class="">Sign In</a>
+          
+        </p>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <%- include('common/head') %>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body class="signup-body">
+    <%- include('common/navbar') %> 
+    <div class="card signUp-container">
+     
+      <form id="login-form" class="signup-form" action="/login" method="post" style="background-color: white; color: black; border-radius: 20px;">
+        <a href="/" class=""> HOME</a>
+        <h1 style="color: black;">SIGN IN</h1>
+        <label for="user">
+          <input id="user"  required="true" class="input-field" type="text" name="user" placeholder="Username" style="border-color: black;"/>
+        </label>
+        <label for="password">
+          <input
+            id="password"
+            class="input-field"
+            required="true"
+            type="password"
+            name="password"
+            placeholder="Password"
+            style="border-color: black;"
+          />
+        </label>
+        
+
+        <input
+          class="submit-btn"
+          type="submit"
+          value="Login"
+          style="background-color: red; width: 100%;"
+          //onclick="Login();"
+        />
+        
+
+        <p class="signup-text">
+          Don't have an account? <a href="/signup" class="">Sign Up</a>
+          
+        </p>
+      </form>
+      <%_ if(locals.error){ _%>
+        <p><% locals.error%></p>
+        <%_ } _%>
+    </div>
+
+    <script>
+      function Login() {
+        var username = document.getElementById("user").value;
+        let user = {
+          username: username,
+        };
+        let s = JSON.stringify(user);
+        sessionStorage.setItem("login", s);
+      }
+      sessionStorage.removeItem("login");
+    </script>
+  </body>
+</html>

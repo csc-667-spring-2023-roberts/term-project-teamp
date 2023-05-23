@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('common/head'); %>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/scripts/game.js"></script>
+    <script>
+      function onload(e) {
+        console.log("onload");
+        var room = document.getElementById("room");
+        let x = sessionStorage.getItem("login");
+        let user = JSON.parse(x);
+
+        const message = {
+          event: "joinroom",
+          user: user.username,
+          room: room.value,
+        };
+
+        console.log(message);
+        socket.emit("joinroom", JSON.stringify(message));
+      }
+    </script>
+  </head>
+
+  <body onload="onload()">
+    <%- include('common/navbar') %> 
+    <div class="container">
+
+      <main class="main">
+        <p>Lobby: <%= roomname %></p>
+        <div>
+          <table style="border:1px solid #fff; border-collapse: collapse;padding:20px">
+            <thead><tr><th style="border:1px solid #fff; border-collapse: collapse;padding:20px">Players</th></tr></thead>
+            <tbody>
+            <% players.forEach(function(p) { %>
+              <tr><td style="border:1px solid #fff; border-collapse: collapse;padding:20px"><%= p.name %><% if(host === p.name){ %>(host)<% } %></td></tr>
+            <% }); %>
+          </tbody>
+          </table>
+        </div>
+        <% if(ishost === true){ %>
+        <div>
+          <button class="submit-btn"><a id="startgame" href="\startgame?room=<%= roomname %>">
+            Start game</a></button>
+        </div>
+
+        <% } else{ %> Host will start the game <% } %>
+      </main>
+      <aside class="sidebar" >
+        <h2>Chat</h2>
+        <form id="input-form" onsubmit="sendMessage(event);" style="padding: 20px">
+          <label for="message" style="color:black">CHAT:</label>
+         
+          <div id="chatbox">
+            <% chats.forEach(function(p) { %>
+            <div class="chattext"><span style="display:flex;"><img src="images/user.png" className="img" style="height: 20px; width:20px"></img><%= p.player %> : <%= p.message %></span></div>
+            <% }); %>
+          </div>
+          <textarea id="message" type="text"  name="message" ></textarea><br>
+          <input id="room" type="hidden" name="room" value="<%= roomname %>" />
+          <input type="submit" value="submit" style="background-color: red; width: 100%;"/>
+        </form>
+      </aside>
+    </div>
+  </body>
+</html>

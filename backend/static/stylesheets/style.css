@@ -1,0 +1,488 @@
+/* body {
+    background-color: rgba(0, 0, 255, 0.1);
+}
+*/
+
+#chatbox {
+  background-color: #fff;
+  height: 300px;
+  overflow: auto;
+  color: black;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  border: 1px solid #fff;
+}
+
+.chattext {
+  margin: 0 10px;
+  background-color: cornsilk;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  border: 0 none;
+  padding: 0;
+  background-color: #333;
+  /* height:100vh; */
+}
+
+ul {
+  padding-left: 1em;
+}
+
+h1,
+h2,
+p {
+  margin: 0 0 0.8em 0;
+}
+
+.container_no_chat {
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 7px;
+  background-color: #333;
+  color: white;
+  border-radius: 3px;
+  padding: 16px;
+}
+
+.container {
+  /* max-width: 940px; */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 300px;
+  grid-template-rows: 50px auto 50px;
+  grid-gap: 20px;
+}
+
+.headers {
+  font-size: 1em;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  padding: 20px;
+  display: flex;
+  flex-grow: 1;
+  /* flex-direction: column; */
+  background-color: #333;
+  height: 75px;
+  align-items: center;
+}
+
+.headers .header {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.headers h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.headers a {
+  color: white;
+  text-decoration: underline;
+}
+
+.container > * {
+  color: white;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12pt;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  border-top: 1px solid #ccc;
+}
+
+/* loggedout page styles */
+.centered-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.uno-title {
+  margin-bottom: 1rem;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list li {
+  margin: 0 1rem;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.stats-block {
+  flex: 3;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+.current-games {
+  flex: 10;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.each-room {
+  flex: 10;
+  padding: 2rem;
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  display: flex;
+  background-color: #333;
+  color: white;
+}
+
+.each-room-status {
+  animation: blinker 1s linear infinite;
+  background-color: #ffa600;
+  border-radius: 20px;
+  width: fit-content;
+  padding: 10px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* logged in page styles */
+.main {
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #333;
+}
+
+.main div {
+  padding: 20px;
+  border-radius: 8px;
+
+  text-align: center;
+}
+
+.main p {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.main input[type="submit"] {
+  border: none;
+  padding: 10px 20px;
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.game-card {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.game-card h3 {
+  margin-bottom: 10px;
+}
+
+.game-card a {
+  display: inline-block;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* signUp page */
+body.signup-body {
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.signUp-container {
+  color: white;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.nav li a {
+  color: white;
+  text-decoration: none;
+}
+
+.signup-form {
+  display: grid;
+  grid-gap: 15px;
+  padding: 120px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+label em {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.submit-btn {
+  background-color: red;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+.submit-btn:hover {
+  background-color: orange;
+  transition: background-color 0.3s;
+}
+
+/* waiting room page */
+.main h1 {
+  margin-bottom: 10px;
+}
+
+.main p {
+  margin-bottom: 10px;
+}
+
+.main a {
+  display: inline-block;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.sidebar h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.sidebar form {
+  background-color: #f8f8f8;
+  margin: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.sidebar form input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.chattext {
+  margin-bottom: 10px;
+}
+
+/* join game page */
+.form-box {
+  width: 20%;
+  padding: 30px;
+  margin: auto;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="username"],
+form input[type="email"],
+form input[type="password"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form input[type="submit"] {
+  width: 50%;
+  margin: auto;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  text-align: center;
+  color: red;
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: none;
+  }
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .stats-block,
+  .current-games {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.signup-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  width: 25%;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+.signup-btn:hover {
+  background-color: orange;
+}
+
+.signup-text {
+  text-align: center;
+  color: black;
+}
+
+#rules,
+#special-cards {
+  display: none;
+}
+
+#rules:target,
+#special-cards:target {
+  display: block;
+}
+
+#rules:target {
+  display: block;
+}
+
+.nav-list li a {
+  display: inline-block;
+  padding: 10px;
+  background-color: royalblue;
+  margin-right: 10px;
+  color: white;
+}
+
+.nav li a:hover {
+  background-color: #007bff;
+}
