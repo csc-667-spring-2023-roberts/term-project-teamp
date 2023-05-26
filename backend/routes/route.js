@@ -70,7 +70,7 @@ router.post("/signup", async (request, response) => {
     response.redirect("/");
   } catch (error) {
     console.log({ error });
-    response.render("register", {
+    response.render("signUp", {
       title: "Jrob's Term Project",
       username,
       email,
