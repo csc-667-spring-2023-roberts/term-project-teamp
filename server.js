@@ -13,15 +13,18 @@ const app = express();
 const db = require("./backend/db/connection.js");
 
 const oneDay = 1000 * 60 * 60 * 24;
+
+
+
 const sessionMiddleware = session({
   store: new pgSession({
     pgPromise: db,
-    createTableIfMissing: true,
   }),
   secret: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: oneDay },
+  createTableIfMissing: true,
 });
 app.use(express.json());
 app.use(morgan("dev"));
@@ -61,3 +64,4 @@ if (process.env.NODE_ENV === "development") {
 
   app.use(connectLiveReload());
 }
+
