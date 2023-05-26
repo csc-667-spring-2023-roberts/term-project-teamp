@@ -12,3 +12,6 @@ https://docs.google.com/presentation/d/1RVB_QUzCnzhqJcLtJeWPGj7wa6EaBKjA_IQLN7HK
 
 render link:
 https://uno-by-team-p.onrender.com/
+
+Bugs:
+When a user signs up they have to logout and log back in for them to login to the account. When creating a game the user has to create the game, log out and log back in so the game plays without additional objects that are created. 
